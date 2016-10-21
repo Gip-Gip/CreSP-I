@@ -10,3 +10,7 @@ mediums, such as tape and phonograph.
 
 CreSP/I is being designed to fit on a small peice of paper, so it can be copied
 down when needed.
+
+###Where can I find useful info on CreSP/I?
+
+SPECS.pdf and .odt hold all the info the readme should, plus a little bit more.
