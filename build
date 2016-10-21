@@ -1,0 +1,35 @@
+#!/bin/sh
+
+cc=cc
+ccargs="-g -Wall --std=c89"
+exeext=".elf"
+includearg="-I"
+outputarg="-o"
+addarg="-q"
+targetarg="-T"
+includes="src/include"
+install=false
+
+for var in $@; do
+    if [ $var = "clean" ]; then
+        rm src/*$exeext;
+        exit;
+    elif [ $var = "install" ]; then
+        install=true;
+    else
+        export "$var";
+    fi
+done
+
+rm src/*$exeext
+
+for file in src/*.c; do
+    echo $cc $ccargs $includearg $includes "$file" $outputarg "${file%%.*}$exeext" | tee /dev/stderr | sh;
+done
+
+if [ $install = true ]; then
+    for file in src/*.elf; do
+        filex="${file##*/}"
+        echo cp "$file" "/usr/bin/${filex%%.*}" | tee /dev/stderr | sh;
+    done
+fi
