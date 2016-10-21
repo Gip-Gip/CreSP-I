@@ -23,5 +23,5 @@ int main( void )
 
     for(; !EF; buf = GET()) genWave(buf);
 
-    return 0;
+    return NUL;
 }

@@ -9,5 +9,5 @@ int main()
 
     for(; !EF; buf = GET()) PUT(table[buf]);
 
-    return 0;
+    return NUL;
 }

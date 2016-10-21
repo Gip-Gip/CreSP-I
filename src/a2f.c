@@ -40,5 +40,5 @@ int main( void )
 
     PUT(buf);
 
-    return 0;
+    return NUL;
 }

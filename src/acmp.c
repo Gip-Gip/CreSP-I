@@ -13,7 +13,7 @@ int main( void )
 
     for(;tblSz < MVAL && frqTbl[top] != NUL;tblSz ++)
     {
-        outTbl[tblSz] = top, frqTbl[top] = 0;
+        outTbl[tblSz] = top, frqTbl[top] = NUL;
 
         for(i = NUL; i < MVAL; i ++) if(frqTbl[i] > frqTbl[top]) top = i;
     }
@@ -26,9 +26,9 @@ int main( void )
         frqTbl[outTbl[i]] = i;
     }
 
-    fseek(stdin, 0, SEEK_SET);
+    fseek(stdin, NUL, SEEK_SET);
 
     for(buf = GET(); !EF; buf = GET()) PUT(frqTbl[buf]);
 
-    return 0;
+    return NUL;
 }
