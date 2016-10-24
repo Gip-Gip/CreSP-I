@@ -1,5 +1,5 @@
-#CreSP-I
-##The Crestlength Storage Protocol / Interface
+#CreSP/I
+##The Crestlength Storage Protocol and Interface
 
 ###What is it?
 
