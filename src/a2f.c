@@ -2,41 +2,40 @@
 
 #define SKIP 200 /* The amount of bytes to skip in stdin */
 #define WCOR 1 /* The correction for getting an accurate minimal crestlength */
-#define THRSH 50 /* The threshold to which it is considered part of a crest */
-#define RCONST 0.445 /* If a value is greater than this constant, it is rounded
+#define THRSH 0x90 /* The threshold to which it is considered part of a crest */
+#define RCNST 0.445 /* If a value is greater than this constant, it is rounded
                         up */
 
 num bLen = sizeof(byte);
 
-num rounded(double di, double dv)
+num dvid(dbl a, dbl b) /* Divide and round */
 {
-    double d = di / dv;
+    dbl d = a / b;
     num n = d;
-    double f = d - n;
+    dbl f = d - n;
 
-    return n + (f > RCONST);
+    return n + (f > RCNST);
 }
 
-num getWave()
+num getW()
 {
     num cLen = NUL;
 
     while(GET() < THRSH && !EF);
     while(GET() >= THRSH && !EF) cLen ++;
 
-    return rounded(cLen, bLen);
+    return dvid(cLen, bLen);
 }
 
 int main( void )
 {
     byte buf;
 
-    fseek(stdin, SKIP, SEEK_SET);
-    getWave();
-    bLen = getWave() + WCOR;
+    getW();
+    bLen = getW() + WCOR;
 
-    while(!EF && getWave() != LEND);
-    for(buf = getWave(); !EF; buf = getWave()) PUT(buf);
+    while(!EF && getW() != LEND);
+    for(buf = getW(); !EF; buf = getW()) PUT(buf);
 
     PUT(buf);
 

@@ -2,12 +2,12 @@
 
 int main()
 {
-    num tblSz = GET(), i = NUL;
-    byte *table = calloc(MVAL, sizeof(byte)), buf = GET();
+    num tSz = GET(), i = NUL;
+    byte *tbl = calloc(MVAL, sizeof(byte)), buf = GET();
 
-    for(; i < tblSz && !EF; i ++, buf = GET()) table[i] = buf;
+    for(; i < tSz && !EF; i ++, buf = GET()) tbl[i] = buf;
 
-    for(; !EF; buf = GET()) PUT(table[buf]);
+    for(; !EF; buf = GET()) PUT(tbl[buf]);
 
     return NUL;
 }

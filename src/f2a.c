@@ -2,10 +2,10 @@
 
 #define TLEN 1 /* The length of the trough */
 #define HLEN 20000 /* The length of the header */
-#define AMP 200 /* The amperage */
+#define AMP 0xFF /* The amperage */
 #define LCOR 1 /* Correction constant for genWave */
 
-void genWave(num len)
+void genW(num len)
 {
     num tLen = TLEN;
 
@@ -17,11 +17,11 @@ int main( void )
 {
     num hLen = HLEN, buf = GET();
 
-    while(--hLen) genWave(NUL);
+    while(--hLen) genW(NUL);
 
-    genWave(LEND);
+    genW(LEND);
 
-    for(; !EF; buf = GET()) genWave(buf);
+    for(; !EF; buf = GET()) genW(buf);
 
     return NUL;
 }

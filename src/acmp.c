@@ -2,33 +2,33 @@
 
 int main( void )
 {
-    num *frqTbl = calloc(MVAL, sizeof(num)), tblSz = NUL, top = NUL, i;
-    byte *outTbl = calloc(MVAL, sizeof(byte)), buf = GET();
+    num *fTbl = calloc(MVAL, sizeof(num)), tSz = NUL, top = NUL, i;
+    byte *oTbl = calloc(MVAL, sizeof(byte)), buf = GET();
 
-    for(;!EF; buf = GET())
+    for(; !EF; buf = GET())
     {
-        frqTbl[buf] ++;
-        if(frqTbl[buf] > frqTbl[top]) top = buf;
+        fTbl[buf] ++;
+        if(fTbl[buf] > fTbl[top]) top = buf;
     }
 
-    for(;tblSz < MVAL && frqTbl[top] != NUL;tblSz ++)
+    for(; tSz < MVAL && fTbl[top] != NUL; tSz ++)
     {
-        outTbl[tblSz] = top, frqTbl[top] = NUL;
+        oTbl[tSz] = top, fTbl[top] = NUL;
 
-        for(i = NUL; i < MVAL; i ++) if(frqTbl[i] > frqTbl[top]) top = i;
+        for(i = NUL; i < MVAL; i ++) if(fTbl[i] > fTbl[top]) top = i;
     }
 
-    PUT(tblSz);
+    PUT(tSz);
 
-    for(i = NUL; i < tblSz; i ++)
+    for(i = NUL; i < tSz; i ++)
     {
-        PUT(outTbl[i]);
-        frqTbl[outTbl[i]] = i;
+        PUT(oTbl[i]);
+        fTbl[oTbl[i]] = i;
     }
 
     fseek(stdin, NUL, SEEK_SET);
 
-    for(buf = GET(); !EF; buf = GET()) PUT(frqTbl[buf]);
+    for(buf = GET(); !EF; buf = GET()) PUT(fTbl[buf]);
 
     return NUL;
 }

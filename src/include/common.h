@@ -10,3 +10,4 @@
 
 typedef unsigned int num;
 typedef unsigned char byte;
+typedef double dbl;
